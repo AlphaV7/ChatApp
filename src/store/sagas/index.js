@@ -8,11 +8,36 @@ export default function * root() {
 };
 
 function * fetchApiMessage(action) {
-  const { message } = action;
+  try {
+    const { message } = action;
 
-  const botMessage = yield call(chatBotApiPromiseWrapper, message);
+    let payload = {
+      messageListElement: [
+        {
+          sender: 'user',
+          message: message,
+        },
+      ],
+    };
 
-  yield put({ type: actions.APPEND_MESSAGE, botMessage});
+    yield put({ type: actions.APPEND_MESSAGE, payload });
+
+    const botMessage = yield call(chatBotApiPromiseWrapper, message);
+    payload = {
+      messageListElement: [
+        {
+          sender: 'bot',
+          message: botMessage.message.message,
+        },
+      ],
+      chatBotName: botMessage.message.chatBotName,
+      chatBotDescription: botMessage.message.chatBotID,
+    };
+
+    yield put({ type: actions.APPEND_MESSAGE, payload });
+  } catch (err){
+
+  }
 }
 
 function * chatBotApiPromiseWrapper(message){

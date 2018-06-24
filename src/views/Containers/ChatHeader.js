@@ -1,10 +1,14 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
 import { Header } from '../Components/index';
+import * as actions from '../../store/actions';
 
-export default class ChatHeader extends React.Component {
+export class ChatHeader extends React.Component {
   constructor(props){
     super(props);
+
+    this.props.setDefaultValue();
   }
 
   render(){
@@ -18,3 +22,23 @@ export default class ChatHeader extends React.Component {
     );
   }
 }
+
+const mapStateToProps = function(state) {
+  const chatBotName = state && state.chatBotName;
+  const chatBotDescription = state && state.chatBotDescription;
+
+  return {
+    chatBotName: chatBotName,
+    chatBotDescription: chatBotDescription,
+  };
+};
+
+const mapDispatchToProps = function(dispatch) {
+  return {
+    setDefaultValue: function() {
+      dispatch(actions.setDefaultValue());
+    },
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(ChatHeader);

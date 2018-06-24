@@ -1,8 +1,9 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
 import { MessageList } from '../Components/index';
 
-export default class ChatMessageBody extends React.Component {
+export class ChatMessageBody extends React.Component {
   constructor(props){
     super(props);
   }
@@ -15,3 +16,13 @@ export default class ChatMessageBody extends React.Component {
     );
   }
 }
+
+const mapStateToProps = function(state) {
+  const { messageListElements } = state;
+
+  return {
+    messageListElements: messageListElements || [],
+  };
+};
+
+export default connect(mapStateToProps)(ChatMessageBody);
