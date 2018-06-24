@@ -1,7 +1,7 @@
 import React from 'react';
 import classnames from 'classnames';
 
-export default  function Header(props) {
+export default function Header(props) {
   const { chatBotName, chatBotDescription, className } = props;
 
   return (
@@ -13,8 +13,8 @@ export default  function Header(props) {
         )
       }
     >
-      <h1 className="chat-header__heading">{chatBotName}</h1>
-      <h2 className="chat-header__description">{chatBotDescription}</h2>
+      <h3 className="chat-header__heading">{chatBotName}</h3>
+      <h5 className="chat-header__description">{chatBotDescription}</h5>
     </div>
   );
 }
