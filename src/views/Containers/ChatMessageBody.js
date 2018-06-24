@@ -12,7 +12,9 @@ export class ChatMessageBody extends React.Component {
     const { messageListElements } = this.props;
 
     return (
-      <MessageList messageListElements={messageListElements}/>
+      <div className="chat-body">
+        <MessageList messageListElements={messageListElements}/>
+      </div>
     );
   }
 }
