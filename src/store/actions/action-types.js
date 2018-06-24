@@ -1,0 +1,2 @@
+export const GET_BOT_MESSAGE = 'GET_BOT_MESSAGE';
+export const APPEND_MESSAGE = 'APPEND_MESSAGE';

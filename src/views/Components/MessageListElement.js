@@ -1,10 +1,12 @@
 import React from 'react';
 import classnames from 'classnames';
 
-import { Icon, ListMessage } from './index';
+import { Icon, Message } from './index';
 
 export default function MessageListElement(props) {
-  const { className, message, sender } = props;
+  const { className, messageListElement } = props;
+  const sender = messageListElement.sender;
+  const message = messageListElement.message;
 
   return (
     <li
@@ -20,7 +22,7 @@ export default function MessageListElement(props) {
       }
     >
       <Icon sender={sender} />
-      <ListMessage message={message}/>
+      <Message message={message}/>
     </li>
   );
 }

@@ -1,7 +1,9 @@
 export { default as App } from './App';
 export { default as Home } from './Home';
+export { default as Header } from './Header';
 export { default as Message } from './Message';
 export { default as MessageListElement } from './MessageListElement';
 export { default as MessageList } from './MessageList';
+export { default as MessageInputField } from './MessageInputField';
 export { default as Icon } from './Icon';
 export { default as Button } from './Button';
