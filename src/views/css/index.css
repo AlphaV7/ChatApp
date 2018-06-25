@@ -55,7 +55,7 @@ body {
   border-width: 1px;
   border-color: #c8ccd0;
   border-radius: 3px;
-  width: 80%;
+  width: 75%;
   font-size: 20px;
   min-width: 25%;
   padding-left: 10px;
@@ -113,6 +113,14 @@ body {
 
 .message-list__element--bot span {
   float: left;
+}
+
+.scroll-to-bottom {
+  position: relative;
+  height: 10%;
+  bottom: 0px;
+  float: left;
+  clear: both;
 }
 
 svg {
