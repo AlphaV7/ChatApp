@@ -1,7 +1,8 @@
 import { put, call, takeLatest } from 'redux-saga/effects';
 
 import * as actions from '../actions/action-types';
-import { chatBotAPI } from '../../utils';
+import { chatBotAPI, appendIntoLocalStorage } from '../../utils';
+import { STORED_MESSAGES } from '../../constants';
 
 export default function * root() {
   yield takeLatest(actions.GET_BOT_MESSAGE, fetchApiMessage);
@@ -23,6 +24,8 @@ function * fetchApiMessage(action) {
     yield put({ type: actions.APPEND_MESSAGE, payload });
 
     const botMessage = yield call(chatBotApiPromiseWrapper, message);
+
+    appendIntoLocalStorage(STORED_MESSAGES, payload.messageListElement[0]);
     payload = {
       messageListElement: [
         {
@@ -34,9 +37,22 @@ function * fetchApiMessage(action) {
       chatBotDescription: botMessage.message.chatBotID,
     };
 
+    appendIntoLocalStorage(STORED_MESSAGES, payload.messageListElement[0]);
+
     yield put({ type: actions.APPEND_MESSAGE, payload });
   } catch (err){
+    const { message } = action;
+    const payload = {
+      messageListElement: [
+        {
+          sender: 'user',
+          message: message,
+          notSent: true,
+        },
+      ],
+    };
 
+    yield put({ type: actions.APPEND_MESSAGE, payload });
   }
 }
 

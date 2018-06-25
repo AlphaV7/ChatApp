@@ -1,4 +1,5 @@
 import * as actions from '../actions/index';
+import { fetchLocalStorage } from '../../utils';
 
 const defaultState = {
   messageListElements: [],
@@ -23,6 +24,12 @@ const rootReducer = function(state = defaultState, action) {
       }
 
       return { ...state, ...updatedState };
+    }
+    case actions.GET_LOCAL_STORAGE: {
+      const { key } = action;
+      const messageListElements = fetchLocalStorage(key);
+
+      return { ...state, messageListElements: messageListElements || [] };
     }
     default: {
       return { ...state };

@@ -11,6 +11,12 @@ export class ChatMessageInput extends React.Component{
     this.inputFieldRef = React.createRef();
   }
 
+  handleInputFieldEnter = (event) => {
+    if (event.key === 'Enter') {
+      this.handleButtonClick();
+    }
+  }
+
   handleButtonClick = (event) => {
     const inputFieldValue = this.inputFieldRef.current.value;
 
@@ -23,7 +29,7 @@ export class ChatMessageInput extends React.Component{
   render(){
     return (
       <div className="chat-input-container">
-        <MessageInputField inputRef={this.inputFieldRef} placeholder="Type something..." />
+        <MessageInputField inputRef={this.inputFieldRef} placeholder="Type something..." onKeyPress={this.handleInputFieldEnter}/>
         <Button onClick={this.handleButtonClick}>Send</Button>
       </div>
     );
