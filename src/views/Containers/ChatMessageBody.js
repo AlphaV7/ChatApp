@@ -2,10 +2,14 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import { MessageList } from '../Components/index';
+import { getLocalStorage } from '../../store/actions/index';
+import { STORED_MESSAGES } from '../../constants';
 
 export class ChatMessageBody extends React.Component {
   constructor(props){
     super(props);
+
+    this.props.getLocalStorage(STORED_MESSAGES);
   }
 
   scrollToBottom = () => {
@@ -46,4 +50,12 @@ const mapStateToProps = function(state) {
   };
 };
 
-export default connect(mapStateToProps)(ChatMessageBody);
+const mapDispatchToProps = function(dispatch) {
+  return {
+    getLocalStorage: function(key) {
+      dispatch(getLocalStorage(key));
+    },
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(ChatMessageBody);
