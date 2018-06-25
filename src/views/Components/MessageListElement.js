@@ -7,6 +7,7 @@ export default function MessageListElement(props) {
   const { className, messageListElement } = props;
   const sender = messageListElement.sender;
   const message = messageListElement.message;
+  const notSent = messageListElement.notSent;
 
   return (
     <li
@@ -16,13 +17,15 @@ export default function MessageListElement(props) {
           {
             'message-list__element--user': sender === 'user',
             'message-list__element--bot': sender === 'bot',
+            'message-list__element--not-sent': notSent,
           },
           className
         )
       }
     >
-      <Icon sender={sender} />
-      <Message message={message}/>
+      {!notSent && <Icon sender={sender} />}
+      {!notSent && (<Message message={message}/>)}
+      {notSent === true && (<Message message="unable to send message" className="message-not-sent" />)}
     </li>
   );
 }

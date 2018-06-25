@@ -41,7 +41,18 @@ function * fetchApiMessage(action) {
 
     yield put({ type: actions.APPEND_MESSAGE, payload });
   } catch (err){
+    const { message } = action;
+    const payload = {
+      messageListElement: [
+        {
+          sender: 'user',
+          message: message,
+          notSent: true,
+        },
+      ],
+    };
 
+    yield put({ type: actions.APPEND_MESSAGE, payload });
   }
 }
 
