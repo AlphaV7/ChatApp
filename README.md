@@ -1,5 +1,15 @@
 # ChatApp
-simple mobile/web chat application on react
+React chat application
+
+### Description
+A chat application built to communicate with a chat bot. Application is built in Reactjs.
+API Endpoint: : http://www.personalityforge.com/api/chat/ 
+To use the application on local server, replace the ApiKey, external ID and chatbotID with the one available from
+the website.
+API Documentation: https://www.personalityforge.com/chatbot-api-docs.php
+
+The application uses reactjs for frontend with redux as a state storage and redux-saga to handle API calls.
+The application stores history and chat data in localstorage.
 
 ### Demo
 

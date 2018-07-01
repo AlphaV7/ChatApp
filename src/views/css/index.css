@@ -123,6 +123,14 @@ body {
   clear: both;
 }
 
+.message.message-not-sent {
+  background: #f1f1f1;
+  box-shadow: none;
+  font-size: 14px;
+  color: red;
+  margin-right: 30px;
+}
+
 svg {
   top: 2px;
   position: relative;

@@ -29,7 +29,11 @@ export class ChatMessageInput extends React.Component{
   render(){
     return (
       <div className="chat-input-container">
-        <MessageInputField inputRef={this.inputFieldRef} placeholder="Type something..." onKeyPress={this.handleInputFieldEnter}/>
+        <MessageInputField
+          inputRef={this.inputFieldRef}
+          placeholder="Type something..."
+          onKeyPress={this.handleInputFieldEnter}
+        />
         <Button onClick={this.handleButtonClick}>Send</Button>
       </div>
     );
